@@ -9,7 +9,8 @@ namespace RealEstateAPI.Data
         {
             var properties = database.GetCollection<Property>("Properties");
 
-            if (!properties.Find(_ => true).Any())
+            // ⚠️ Solo insertar datos de ejemplo si no existen registros
+            if (!properties.AsQueryable().Any())
             {
                 var seedProperties = new List<Property>
                 {
