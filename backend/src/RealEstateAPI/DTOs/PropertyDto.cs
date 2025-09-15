@@ -1,4 +1,4 @@
-namespace RealEstateAPI.Dtos
+namespace RealEstateAPI.DTOs
 {
     public class PropertyDto
     {
@@ -9,7 +9,6 @@ namespace RealEstateAPI.Dtos
         public decimal Price { get; set; }
         public string ImageUrl { get; set; } = string.Empty;
 
-        // Relación opcional: incluir datos del dueño
         public OwnerDto? Owner { get; set; }
     }
 }

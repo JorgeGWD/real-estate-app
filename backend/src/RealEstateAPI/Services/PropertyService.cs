@@ -12,19 +12,14 @@ namespace RealEstateAPI.Services
             _repository = repository;
         }
 
-        public async Task<List<Property>> GetAllAsync()
-        {
-            return await _repository.GetAllAsync();
-        }
+        public Task<List<Property>> FilterAsync(string? name, string? address, decimal? minPrice, decimal? maxPrice) =>
+            _repository.FilterAsync(name, address, minPrice, maxPrice);
 
-        public async Task<Property?> GetByIdAsync(string id)
-        {
-            return await _repository.GetByIdAsync(id);
-        }
+        public Task<Property?> GetByIdAsync(string id) =>
+            _repository.GetByIdAsync(id);
 
-        public async Task<List<Property>> FilterAsync(string? name, string? address, decimal? minPrice, decimal? maxPrice)
-        {
-            return await _repository.FilterAsync(name, address, minPrice, maxPrice);
-        }
+        // ✅ Nuevo método
+        public Task CreateAsync(Property property) =>
+            _repository.CreateAsync(property);
     }
 }

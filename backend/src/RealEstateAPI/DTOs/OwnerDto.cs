@@ -1,4 +1,4 @@
-namespace RealEstateAPI.Dtos
+namespace RealEstateAPI.DTOs
 {
     public class OwnerDto
     {
