@@ -46,7 +46,7 @@ builder.Services.AddCors(options =>
         {
             policy.WithOrigins(
                 "http://localhost:3000",              // frontend local
-                "https://tu-frontend.vercel.app"      // frontend en Vercel (ajusta la URL real)
+                "https://real-estate-app-sooty-nine.vercel.app"      // frontend en Vercel (ajusta la URL real)
             )
             .AllowAnyHeader()
             .AllowAnyMethod();
