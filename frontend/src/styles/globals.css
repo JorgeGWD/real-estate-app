@@ -1,30 +1,200 @@
-body {
-  font-family: Arial, sans-serif;
+/* ===== Theme Variables ===== */
+:root {
+  --color-bg: #ffffff;
+  --color-text: #000000;
+  --color-border: #ccc;
+  --color-card-bg: #ffffff;
+  --color-card-bg-opacity: rgba(245, 245, 245, 0.9); /* ⚡ Ajuste tema claro */
+  --color-button-bg: #0070f3;
+  --color-button-text: #ffffff;
+  --gap-default: 1rem;
+}
+
+[data-theme="dark"] {
+  --color-bg: #121212;
+  --color-text: #ffffff;
+  --color-border: #444;
+  --color-card-bg: #1e1e1e;
+  --color-card-bg-opacity: rgba(30, 30, 30, 0.85);
+  --color-button-bg: #0a84ff;
+  --color-button-text: #ffffff;
+}
+
+/* ===== Reset y font ===== */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+body {
+  font-family: Arial, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.3s, color 0.3s;
+}
+
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ===== Containers ===== */
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 92%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* ===== Property List ===== */
 .property-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1rem;
-  padding: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: var(--gap-default);
 }
 
+/* ===== Property Card ===== */
 .property-card {
-  border: 1px solid #ccc;
-  padding: 1rem;
+  border: 1px solid var(--color-border);
   border-radius: 8px;
-  background: #fff;
+  background: var(--color-card-bg-opacity);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.3s, border 0.3s;
 }
 
-.filter-bar {
+.property-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.property-card__content {
   display: flex;
+  flex-direction: column;
   gap: 0.5rem;
   padding: 1rem;
 }
 
-.filter-bar input,
-.filter-bar button {
+/* ===== Filter bar ===== */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* ===== Property Details ===== */
+.property-details {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.property-details img {
+  border-radius: 8px;
+}
+
+.property-details__content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* ===== Footer ===== */
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: var(--color-card-bg-opacity);
+  border-top: 1px solid var(--color-border);
+  flex-wrap: wrap;
+  transition: background 0.3s;
+}
+
+.footer .theme-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer .theme-button {
+  cursor: pointer;
   padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background: transparent;
+  transition: border 0.2s, background 0.2s;
+}
+
+.footer .theme-button.active {
+  border: 2px solid var(--color-button-bg);
+}
+
+.footer .copy-section {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  cursor: default;
+  color: var(--color-text);
+  font-size: 0.8rem;
+}
+
+.footer .copy-section span:first-child {
+  font-weight: bold;
+}
+
+/* ===== Global Elements ===== */
+
+input,
+button {
+  padding: 0.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+button {
+  background: var(--color-button-bg);
+  color: var(--color-button-text);
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s, opacity 0.3s;
+}
+
+button:hover {
+  opacity: 0.9;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .filter-bar {
+    flex-direction: column;
+  }
+
+  .property-details__content {
+    gap: 0.25rem;
+  }
+
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .footer .theme-buttons {
+    gap: 0.5rem;
+  }
 }

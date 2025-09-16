@@ -14,13 +14,17 @@ export default function PropertyCard({ property }: { property: Property }) {
       <Image
         src={property.imageUrl}
         alt={`Image of ${property.name}`}
-        width={200}
-        height={150}
+        width={250}
+        height={200}
       />
-      <h2>{property.name}</h2>
-      <p>{property.address}</p>
-      <p>{formattedPrice}</p>
-      <Link href={`/property/${property.id}`}>View Details</Link>
+      <div className="property-card__content">
+        <h2>{property.name}</h2>
+        <p>{property.address}</p>
+        <p>{formattedPrice}</p>
+        <Link href={`/property/${property.id}`}>
+          <button className="property-card__view-button">View Details</button>
+        </Link>
+      </div>
     </div>
   )
 }

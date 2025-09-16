@@ -35,7 +35,7 @@ export default function PropertyDetail() {
         <meta property="og:image" content={property.imageUrl} />
       </Head>
 
-      <div>
+      <div className="property-details container">
         <h1>{property.name}</h1>
         <Image
           src={property.imageUrl}
@@ -44,9 +44,11 @@ export default function PropertyDetail() {
           height={300}
           unoptimized
         />
-        <p><strong>Address:</strong> {property.address}</p>
-        <p><strong>Price:</strong> {formattedPrice}</p>
-        <p><strong>Owner ID:</strong> {property.idOwner}</p>
+        <div className="property-details__content">
+          <p><strong>Address:</strong> {property.address}</p>
+          <p><strong>Price:</strong> {formattedPrice}</p>
+          <p><strong>Owner ID:</strong> {property.idOwner}</p>
+        </div>
       </div>
     </>
   )

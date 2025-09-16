@@ -55,7 +55,7 @@ export default function Home() {
         <meta property="og:image" content="https://picsum.photos/1200/630" />
       </Head>
 
-      <div>
+      <div className="container">
         <h1>Real Estate Properties</h1>
         <FilterBar onFilter={setProperties} />
         {loading && <p>Loading...</p>}

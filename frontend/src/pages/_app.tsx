@@ -1,6 +1,8 @@
 import type { AppProps } from "next/app"
 import Head from "next/head"
 import "../styles/globals.css"
+import { ThemeProvider } from "@/context/ThemeContext"
+import Footer from "@/components/commons/Footer"
 
 export default function MyApp({ Component, pageProps }: AppProps & { pageProps: { title?: string } }) {
   const defaultTitle = "Real Estate Properties"
@@ -25,8 +27,12 @@ export default function MyApp({ Component, pageProps }: AppProps & { pageProps: 
         <meta property="og:url" content={url} />
         <meta property="og:image" content={ogImage} />
       </Head>
-
-      <Component {...pageProps} />
+      <ThemeProvider>
+        <div className="container">
+          <Component {...pageProps} />
+        </div>
+        <Footer />
+      </ThemeProvider>
     </>
   )
 }
