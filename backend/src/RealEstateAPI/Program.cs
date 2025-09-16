@@ -7,16 +7,27 @@ using RealEstateAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// MongoDB Settings
-builder.Services.Configure<MongoDbSettings>(
-    builder.Configuration.GetSection("MongoDbSettings"));
+// MongoDB Settings (appsettings.json + variables de entorno)
+builder.Services.Configure<MongoDbSettings>(options =>
+{
+    var connectionString = Environment.GetEnvironmentVariable("MONGODB_URI")
+                          ?? builder.Configuration.GetSection("MongoDbSettings:ConnectionString").Value;
+
+    options.ConnectionString = connectionString;
+    options.DatabaseName = builder.Configuration.GetSection("MongoDbSettings:DatabaseName").Value;
+});
 
 builder.Services.AddSingleton<IMongoClient>(s =>
-    new MongoClient(builder.Configuration.GetValue<string>("MongoDbSettings:ConnectionString")));
+{
+    var mongoSettings = s.GetRequiredService<IOptions<MongoDbSettings>>().Value;
+    return new MongoClient(mongoSettings.ConnectionString);
+});
 
 builder.Services.AddScoped(s =>
-    s.GetRequiredService<IMongoClient>().GetDatabase(
-        builder.Configuration.GetValue<string>("MongoDbSettings:DatabaseName")));
+{
+    var mongoSettings = s.GetRequiredService<IOptions<MongoDbSettings>>().Value;
+    return s.GetRequiredService<IMongoClient>().GetDatabase(mongoSettings.DatabaseName);
+});
 
 // Repositories & Services
 builder.Services.AddScoped<PropertyRepository>();
@@ -33,9 +44,12 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowFrontend",
         policy =>
         {
-            policy.WithOrigins("http://localhost:3000") // frontend Next.js
-                  .AllowAnyHeader()
-                  .AllowAnyMethod();
+            policy.WithOrigins(
+                "http://localhost:3000",              // frontend local
+                "https://tu-frontend.vercel.app"      // frontend en Vercel (ajusta la URL real)
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod();
         });
 });
 
