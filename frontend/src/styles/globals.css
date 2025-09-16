@@ -4,7 +4,7 @@
   --color-text: #000000;
   --color-border: #ccc;
   --color-card-bg: #ffffff;
-  --color-card-bg-opacity: rgba(245, 245, 245, 0.9); /* ⚡ Ajuste tema claro */
+  --color-card-bg-opacity: #f6f6f6;
   --color-button-bg: #0070f3;
   --color-button-text: #ffffff;
   --gap-default: 1rem;
@@ -15,7 +15,7 @@
   --color-text: #ffffff;
   --color-border: #444;
   --color-card-bg: #1e1e1e;
-  --color-card-bg-opacity: rgba(30, 30, 30, 0.85);
+  --color-card-bg-opacity: #1d1d1d;
   --color-button-bg: #0a84ff;
   --color-button-text: #ffffff;
 }
@@ -63,7 +63,16 @@ body {
 }
 
 /* ===== Property List ===== */
-.property-list {
+.properties-container {
+  display: flex;
+  gap: var(--gap-default);
+}
+
+.properties-content__list {
+  width: 100%;
+}
+
+.properties-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: var(--gap-default);
@@ -97,6 +106,7 @@ body {
 /* ===== Filter bar ===== */
 .filter-bar {
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
@@ -219,21 +229,21 @@ button:hover {
 
 /* ===== Responsive ===== */
 @media (max-width: 768px) {
-  .filter-bar {
-    flex-direction: column;
+  .properties-list {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 
   .property-details__content {
     gap: 0.25rem;
   }
 
-  .footer {
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
   .footer .theme-buttons {
     gap: 0.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .properties-container {
+    flex-direction: column;
   }
 }

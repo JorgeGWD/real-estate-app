@@ -55,20 +55,24 @@ export default function Home() {
         <meta property="og:image" content="https://picsum.photos/1200/630" />
       </Head>
 
-      <div className="container">
+      <div className="properties container">
         <h1>Real Estate Properties</h1>
-        <FilterBar onFilter={setProperties} />
-        {loading && <p>Loading...</p>}
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        {!loading && !error && (
-          <div className="property-list">
-            {properties.length > 0 ? (
-              properties.map((p) => <PropertyCard key={p.id} property={p} />)
-            ) : (
-              <p>No properties found.</p>
+        <div className="properties-container">
+          <FilterBar onFilter={setProperties} />
+          <div className="properties-content__list">
+            {loading && <p>Loading...</p>}
+            {error && <p style={{ color: "red" }}>{error}</p>}
+            {!loading && !error && (
+              <div className="properties-list">
+                {properties.length > 0 ? (
+                  properties.map((p) => <PropertyCard key={p.id} property={p} />)
+                ) : (
+                  <p>No properties found.</p>
+                )}
+              </div>
             )}
           </div>
-        )}
+        </div>
       </div>
     </>
   )
