@@ -50,10 +50,16 @@ body {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  gap: 2rem;
   width: 92%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 0;
+  padding: 6rem 0 2rem;
 }
 
 /* ===== Property List ===== */
@@ -110,6 +116,39 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+}
+
+/* ===== Navbar ===== */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--color-card-bg-opacity);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.navbar__content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1rem;
+}
+
+.navbar__logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.navbar__logo:hover {
+  color: var(--color-button-bg);
 }
 
 /* ===== Footer ===== */

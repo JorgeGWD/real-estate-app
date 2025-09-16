@@ -3,6 +3,7 @@ import Head from "next/head"
 import "../styles/globals.css"
 import { ThemeProvider } from "@/context/ThemeContext"
 import Footer from "@/components/commons/Footer"
+import Navbar from "@/components/commons/Navbar"
 
 export default function MyApp({ Component, pageProps }: AppProps & { pageProps: { title?: string } }) {
   const defaultTitle = "Real Estate Properties"
@@ -28,7 +29,8 @@ export default function MyApp({ Component, pageProps }: AppProps & { pageProps: 
         <meta property="og:image" content={ogImage} />
       </Head>
       <ThemeProvider>
-        <div className="container">
+        <Navbar />
+        <div className="main-content">
           <Component {...pageProps} />
         </div>
         <Footer />
