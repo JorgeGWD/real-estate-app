@@ -2,6 +2,7 @@ import { Property } from "../types/property"
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000"
 
+// ✅ GET /api/properties con filtros opcionales
 export async function getProperties(filters?: {
   name?: string
   address?: string
@@ -24,6 +25,7 @@ export async function getProperties(filters?: {
   return res.json()
 }
 
+// ✅ GET /api/properties/{id}
 export async function getPropertyById(id: string): Promise<Property> {
   const res = await fetch(`${BASE_URL}/api/properties/${id}`)
   if (!res.ok) throw new Error(`Failed to fetch property with id ${id}`)
