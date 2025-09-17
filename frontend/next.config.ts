@@ -15,7 +15,8 @@ const nextConfig: NextConfig = {
       },
     },
   },
-  pageExtensions: ["ts", "tsx"],
+  // Solo compilar páginas reales, no tests
+  pageExtensions: ["ts", "tsx", "js", "jsx"],
 }
 
 export default nextConfig
