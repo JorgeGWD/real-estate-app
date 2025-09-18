@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import FilterBar from '../FilterBar'
+import FilterBar from '../../src/components/FilterBar'
 
 // Mock del módulo propertyService
 jest.mock('../../services/propertyService', () => ({

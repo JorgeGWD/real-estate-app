@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
-import PropertyCard from '../PropertyCard'
-import { Property } from '../../types/property'
+import PropertyCard from '../../src/components/PropertyCard'
+import { Property } from '../../src/types/property'
 
 describe('PropertyCard', () => {
   const mockProperty: Property = {

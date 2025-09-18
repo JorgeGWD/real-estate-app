@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react'
-import Home from '../index'
+import Home from '../../src/pages/index'
 
 // Mock del servicio
 jest.mock('../../services/propertyService', () => ({

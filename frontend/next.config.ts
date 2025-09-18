@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   images: {
     domains: ["picsum.photos"],
   },
-  pageExtensions: ["ts", "tsx", "js", "jsx"],
+  pageExtensions: ["ts", "tsx", "js", "jsx"], // ignora .test.tsx
 }
 
 export default nextConfig
