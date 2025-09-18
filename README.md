@@ -16,5 +16,4 @@ Frontend en **Next.js** y backend en **ASP.NET Core + MongoDB**.
   - C# + .NET 8
   - MongoDB con Mongoose Driver
 - **Infraestructura**
-  - JWT para autenticación
   - Deploy en Vercel (frontend), Render (backend) y Railway (DB)
